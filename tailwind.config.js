@@ -15,7 +15,7 @@ export default {
         primary: "#8F55A4",
         secondary: "#B382C4",
         inactive: '#CCCCCC',
-        decline: '#E2896D',
+        decline: '#AB0F3C',
         notification: "#D3623F",
         text: "#D7B7E2"
       },

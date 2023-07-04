@@ -20,14 +20,26 @@ const exampleData: RepoDataInterface = {
     homepage: ''
 }
 
-function ShowRepo({ url }: ShowRepoPropsInterface) {
+export default function ShowRepo({ url }: ShowRepoPropsInterface) {
     const [repoData, setRepoData] = useState<RepoDataInterface>(exampleData);
+    const [error, setError] = useState<Error | null>(null);
 
     const getRepo = async () => { 
-        const response = await fetch(`https://api.github.com/repos/${url}`);
-        const data = await response.json();
-        
-        return data; 
+        try {
+            const response = await fetch(`https://api.github.com/repos/${url}`);
+            
+            if (!response.ok) {
+              throw new Error('Request failed with status ' + response.status);
+            }
+            const data = await response.json();
+            return data;
+
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                throw new Error('Error fetching repository data: ' + error.message);
+              }
+            throw new Error('Unknown error occurred');
+        }
     }
 
     useEffect(() => {
@@ -44,20 +56,43 @@ function ShowRepo({ url }: ShowRepoPropsInterface) {
                 setRepoData(necessaryData);
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.log("From useEffect: ", typeof error);
+                
+                setError(error);
             });
     }, [url]);
 
     
+    
+    if (error) { 
+        return (
+            <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg'>
+                <h1 className="text-4xl text-decline m-5">
+                    Oops!
+                </h1>
+                <p className='w-4/6 m-10'>
+                    An error has occured. The page you are looking for is not available right now. Please try again later!
+                </p>
+                <i className='m-3 text-decline'>{error.message}</i>
+            </div>
+        )
+    }
     return ( 
-        <div>
-            <h1>{repoData.fullName}</h1>
-            <p>{repoData.description}</p>
-            <p>{repoData.watchers}</p>
-            <p>{repoData.stargazersCount}</p>
-            <a href={repoData.homepage}>{repoData.homepage}</a>
+        <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg'>
+            <h1 className="text-4xl text-primary m-5">
+                {repoData.fullName}
+            </h1>
+            <p className='w-4/6 m-3'>
+                {repoData.description}
+            </p>
+            <p className='w-4/6 m-3'>
+                {repoData.watchers}
+            </p>
+            <p className='w-4/6 m-3'>
+                {repoData.stargazersCount}
+            </p>
+            <a href={repoData.homepage} className='w-4/6 m-3'>{repoData.homepage}</a>
         </div>
     )
 }
 
-export default ShowRepo;
