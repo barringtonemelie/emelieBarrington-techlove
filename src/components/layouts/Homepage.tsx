@@ -53,8 +53,10 @@ export default function Homepage() {
         }
         
     };
+
+
     return (
-        <div className="max-w-4xl w-3/5 mx-auto flex justify-between flex-wrap">
+        <div className="max-w-4xl w-3/5 mx-auto flex justify-center flex-wrap">
             <Button innerText="Previous" isInactive={isPrevInactive} onClick={prevRepo} />
             <Button innerText="Next" isInactive={isNextInactive} onClick={nextRepo} />
 
