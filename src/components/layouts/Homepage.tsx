@@ -62,8 +62,6 @@ export default function Homepage() {
 
             <ShowRepo url={url} />
 
-            <Button innerText="Previous" isInactive={isPrevInactive} onClick={prevRepo} />
-            <Button innerText="Next" isInactive={isNextInactive} onClick={nextRepo} />
         </div>
     )
  }
