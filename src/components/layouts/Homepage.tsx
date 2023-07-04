@@ -56,8 +56,9 @@ export default function Homepage() {
 
 
     return (
-        <div className="max-w-4xl w-3/5 mx-auto flex justify-center flex-wrap">
+        <div className="max-w-4xl w-3/5 mx-auto flex flex-col items-center justify-center flex-wrap lg:flex-row">
             <Button innerText="Previous" isInactive={isPrevInactive} onClick={prevRepo} />
+            <p className="text-2xl py-2.5 m-5" >{ index + 1 } / { db.length }</p>
             <Button innerText="Next" isInactive={isNextInactive} onClick={nextRepo} />
 
             <ShowRepo url={url} />
