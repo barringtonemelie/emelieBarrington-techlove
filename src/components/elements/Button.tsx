@@ -9,7 +9,7 @@ export default function Button({ innerText, isInactive, onClick }: ButtonPropsIn
 
     if (isInactive)
       return (
-        <button className="m-5 font-primary bg-inactive text-white text-2xl py-2.5 px-10 rounded-full mb-6 drop-shadow-primary w-[280px] pointer-events-none">
+        <button className="min-w-fit w-[200px] m-5 font-primary bg-inactive text-white text-2xl py-2.5 px-10 rounded-full mb-6 drop-shadow-primary pointer-events-none">
           {innerText}
         </button>
       );
@@ -17,7 +17,7 @@ export default function Button({ innerText, isInactive, onClick }: ButtonPropsIn
       return (
         <button
           onClick={onClick}
-          className="m-5 font-primary bg-primary text-white text-2xl py-2.5 px-10 rounded-full mb-6 drop-shadow-primary hover:transition-all ease-in-out duration-300 hover:drop-shadow-hover active:bg-secondary active:drop-shadow-primary w-[280px]"
+          className="min-w-fit w-[200px] m-5 font-primary bg-primary text-white text-2xl py-2.5 px-10 rounded-full mb-6 drop-shadow-primary hover:transition-all ease-in-out duration-300 hover:drop-shadow-hover active:bg-secondary active:drop-shadow-primary"
         >
           {innerText}
         </button>

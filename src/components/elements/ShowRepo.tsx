@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BsStar } from 'react-icons/bs';
 
 interface ShowRepoPropsInterface { 
     url: string;
@@ -69,7 +70,7 @@ export default function ShowRepo({ url }: ShowRepoPropsInterface) {
     
     if (error) { 
         return (
-            <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg text-center'>
+            <div className='w-full min-w-fit font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg text-center'>
                 <h1 className="text-4xl text-decline m-5 text-center">
                     Oops!
                 </h1>
@@ -82,20 +83,25 @@ export default function ShowRepo({ url }: ShowRepoPropsInterface) {
     }
 
     return ( 
-        <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg text-center'>
-            <h1 className="text-4xl text-primary m-5">
+        <div className='w-full min-w-fit font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg text-center'>
+            <h1 className="text-4xl font-bold text-primary m-5">
                 {repoData.fullName}
             </h1>
+            <p className='w-4/6 m-3 text-center flex flex-col items-center'>
+                <BsStar />
+                {repoData.stargazersCount}
+            </p>
+
+            <h2 className='text-2xl font-semibold text-center text-primary my-2'>Description</h2>
             <p className='w-4/6 m-3 text-center'>
                 {repoData.description}
             </p>
+
+            <h3 className='text-2xl font-semibold text-center text-primary mt-3'>Watchers: </h3>
             <p className='w-4/6 m-3 text-center'>
                 {repoData.watchers}
             </p>
-            <p className='w-4/6 m-3 text-center'>
-                {repoData.stargazersCount}
-            </p>
-            <a href={repoData.homepage} className='w-4/6 m-3 text-center'>{repoData.homepage}</a>
+            <a href={repoData.homepage} className='w-4/6 m-3 text-center text-secondary underline'>{repoData.homepage}</a>
         </div>
     )
 }
