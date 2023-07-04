@@ -5,7 +5,7 @@ interface ButtonPropsInterface {
 }
 
 
-function Button({ innerText, isInactive, onClick }: ButtonPropsInterface) {
+export default function Button({ innerText, isInactive, onClick }: ButtonPropsInterface) {
 
     if (isInactive)
       return (
@@ -24,5 +24,5 @@ function Button({ innerText, isInactive, onClick }: ButtonPropsInterface) {
       );
   }
   
-  export default Button;
+  
   

@@ -20,7 +20,7 @@ const exampleData: RepoDataInterface = {
     homepage: ''
 }
 
-function ShowRepo({ url }: ShowRepoPropsInterface) {
+export default function ShowRepo({ url }: ShowRepoPropsInterface) {
     const [repoData, setRepoData] = useState<RepoDataInterface>(exampleData);
 
     const getRepo = async () => { 
@@ -60,4 +60,3 @@ function ShowRepo({ url }: ShowRepoPropsInterface) {
     )
 }
 
-export default ShowRepo;
