@@ -32,6 +32,9 @@ export default function ShowRepo({ url }: ShowRepoPropsInterface) {
               throw new Error('Request failed with status ' + response.status);
             }
             const data = await response.json();
+
+            setError(null);
+
             return data;
 
         } catch (error: unknown) {
@@ -66,32 +69,33 @@ export default function ShowRepo({ url }: ShowRepoPropsInterface) {
     
     if (error) { 
         return (
-            <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg'>
-                <h1 className="text-4xl text-decline m-5">
+            <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg text-center'>
+                <h1 className="text-4xl text-decline m-5 text-center">
                     Oops!
                 </h1>
-                <p className='w-4/6 m-10'>
+                <p className='w-4/6 m-10 text-center'>
                     An error has occured. The page you are looking for is not available right now. Please try again later!
                 </p>
-                <i className='m-3 text-decline'>{error.message}</i>
+                <i className='m-3 text-decline text-center'>{error.message}</i>
             </div>
         )
     }
+
     return ( 
-        <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg'>
+        <div className='font-primary p-5 m-10 flex flex-col items-center drop-shadow-primary bg-white rounded-lg text-center'>
             <h1 className="text-4xl text-primary m-5">
                 {repoData.fullName}
             </h1>
-            <p className='w-4/6 m-3'>
+            <p className='w-4/6 m-3 text-center'>
                 {repoData.description}
             </p>
-            <p className='w-4/6 m-3'>
+            <p className='w-4/6 m-3 text-center'>
                 {repoData.watchers}
             </p>
-            <p className='w-4/6 m-3'>
+            <p className='w-4/6 m-3 text-center'>
                 {repoData.stargazersCount}
             </p>
-            <a href={repoData.homepage} className='w-4/6 m-3'>{repoData.homepage}</a>
+            <a href={repoData.homepage} className='w-4/6 m-3 text-center'>{repoData.homepage}</a>
         </div>
     )
 }
