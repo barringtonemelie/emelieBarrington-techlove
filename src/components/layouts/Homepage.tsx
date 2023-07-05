@@ -77,9 +77,7 @@ export default function Homepage() {
 
                 setRepoData(necessaryData);
             })
-            .catch(error => {
-                console.log("From useEffect: ", typeof error);
-                
+            .catch(error => {                
                 setError(error);
             });
      }, [url]);
@@ -88,8 +86,6 @@ export default function Homepage() {
         if (index === 0) {
             return;
         }
-
-        console.log("Hello from prevRepo");
         
         setIndex(index - 1);
         
@@ -99,8 +95,6 @@ export default function Homepage() {
         if (index === db.length - 1) {
             return;
         }
-
-        console.log("Hello from nextRepo")
 
         const newIndex = index + 1; 
         setIndex(newIndex);
