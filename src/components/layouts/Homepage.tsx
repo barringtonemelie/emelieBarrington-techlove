@@ -28,8 +28,6 @@ export default function Homepage() {
         if (index === 0) {
             return;
         }
-
-        console.log("Hello from prevRepo");
         
         setIndex(index - 1);
         
@@ -39,8 +37,6 @@ export default function Homepage() {
         if (index === db.length - 1) {
             return;
         }
-
-        console.log("Hello from nextRepo")
 
         const newIndex = index + 1; 
         setIndex(newIndex);

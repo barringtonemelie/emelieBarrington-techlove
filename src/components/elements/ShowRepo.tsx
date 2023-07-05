@@ -60,7 +60,6 @@ export default function ShowRepo({ url }: ShowRepoPropsInterface) {
                 setRepoData(necessaryData);
             })
             .catch(error => {
-                console.log("From useEffect: ", typeof error);
                 
                 setError(error);
             });
